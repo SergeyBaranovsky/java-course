@@ -3,6 +3,8 @@ package Homework_3;
 import java.util.Arrays;
 import java.util.Random;
 
+//  Создать последовательность случайных чисел, найти и вывести наибольшее из них.
+
 public class Exercise_13 {
 
     static Random random = new Random();
