@@ -10,7 +10,7 @@ public class Exercise_16 {
 
     public static void main(String[] args) {
 
-        //  Используется для длинны массива
+        //  Используется для длины массива
         int length = 10;
         //  Сохраняет позицию максимального числа в массиве
         int maxPosition = 0;
@@ -75,7 +75,7 @@ public class Exercise_16 {
             }
         }
 
-
+        // Вывод данных на консоль( для более удобной проверки выполнения задания)
         System.out.println(Arrays.toString(array));
         System.out.println("Максимальное число в массиве: " + maxNumber);
         System.out.println("Минимальное число в массиве: " + minNumber);
