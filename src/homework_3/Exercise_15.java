@@ -14,7 +14,7 @@ public class Exercise_15 {
 
     public static void main(String[] args) {
 
-        //  Используется для инициализации длины массивва
+        //  Используется для инициализации длины массива
         int length = 11;
 
         //  Создание массива длиной length
@@ -35,7 +35,7 @@ public class Exercise_15 {
             arr[(arr.length-1)-i] = temp;
         }
 
-        //Вывов массива на консоль после реверса
+        //  Вызов массива на консоль после реверса
         System.out.println(Arrays.toString(arr));
 
     }

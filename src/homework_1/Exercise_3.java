@@ -12,7 +12,7 @@ public class Exercise_3 {
     public static void main(String[] args) {
 
         //  Общее количество секунд
-        int total_sec = 4565454;
+        int total_sec = 4500;
 
         //  Остаток секунд после перевода в минуты
         int residue_sec = total_sec % 60;
