@@ -9,11 +9,18 @@ package homework_3;
                     1 1 1 1 1   */
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Exercise_17 {
+
+    static Random random = new Random();
+
     public static void main(String[] args) {
 
-        int[][] array = new int[5][5];
+        //  Используется для длин массива
+        int length = random.nextInt(20) + 1;
+
+        int[][] array = new int[length][length];
 
         //  Заполнение массива данными по типу "бабочка"
         for (int i = 0; i < array.length; i++) {
