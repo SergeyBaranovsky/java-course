@@ -25,13 +25,13 @@ public class Exercise_17 {
         //  Заполнение массива данными по типу "бабочка"
         for (int i = 0; i < array.length; i++) {
             //  Заполнение первой половины массива
-            if (i < (array.length - i)) {
+            if (i < (array.length / 2 + 1)) {
                 for (int j = i; j < array[i].length - i; j++) {
                     array[i][j] = 1;
                 }
             }
             //  Заполнение второй половины массива
-            if (i > (array.length / 2)) {
+            if (i > (array.length / 2 - 1)) {
                 for (int j = array[i].length - i - 1; j < i + 1; j++) {
                     array[i][j] = 1;
                 }
