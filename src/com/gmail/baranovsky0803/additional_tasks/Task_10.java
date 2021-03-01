@@ -10,8 +10,9 @@ public class Task_10 {
         // Сложение
         for (int i = 1; i < 257; i *= 2) {
             sum += i;
-            System.out.println("sum " + sum + " " + i);
         }
+        //  Вывод суммы на консоль
+        System.out.println("Сумма 1+2+4+8+...+256 = " + sum);
     }
 
 

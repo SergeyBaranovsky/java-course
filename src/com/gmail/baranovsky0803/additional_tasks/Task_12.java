@@ -7,9 +7,12 @@ package com.gmail.baranovsky0803.additional_tasks;
 public class Task_12 {
     public static void main(String[] args) {
 
+        //  Переменная для хранения значения дюйма
+        double inch = 2.54;
+
         // Вывод таблицы
         for (int i = 1; i <= 20; i++) {
-            System.out.println( i +"(в дюймах) = "+((double)i*2.54)+"(в см)");
+            System.out.println(i + "(в дюймах) = " + (i * inch) + "(в см)");
         }
     }
 

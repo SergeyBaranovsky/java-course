@@ -13,36 +13,48 @@ public class Task_1 {
 
         //  Ввод числа с консоли
         System.out.print("Введите число: ");
-        int i = new Scanner(System.in).nextInt();
+        int number = new Scanner(System.in).nextInt();
 
         // Счетчик деления на 10
-        int counter = 0;
+        int counter;
 
         //  Переменна для хранения значения числа ( положительное/отрицательное )
         String result = "";
 
         //  Проверка на +/- число
-        if (i > 0) {
+        if (number > 0) {
             result = "положительное";
-        } else if (i < 0) {
+        } else if (number < 0) {
 
             //  Если число было отрицательным --> перевод в положительное
-            i *= -1;
+            number *= -1;
             result = "отрицательное";
         }
 
-        //  Цикл деления числа i на 10 и увеличение счетчика деления
-        if (i != 0) {
+        //  Вывод результата на консоль
+        if (number == 0) {
+            System.out.println("Это 1-значное число");
+        } else {
+            //  Цикл проводит деление number на 10
+            for (counter = 0; number > 0; counter++) {
+                number /= 10;
+            }
+            //  Вывод результата на консоль
+            System.out.println("Это " + counter + "-значное " + result + " число");
+        }
+
+
+        /*    Цикл деления числа number на 10 и увеличение счетчика деления
+        if (number != 0) {
             do {
-                i /= 10;
+                number /= 10;
                 counter++;
-            } while (i > 0);
+            } while (number > 0);
         }
 
         // Вывод результата на консоль в зависимости от счетчика
         switch (counter) {
-            case (0) -> System.out.println("Это ноль");
-            case (1) -> System.out.println("Это " + result + " однозначное число");
+            case (0), (1) -> System.out.println("Это " + result + " однозначное число");
             case (2) -> System.out.println("Это " + result + " двухзначное число");
             case (3) -> System.out.println("Это " + result + " трехзначное число");
             case (4) -> System.out.println("Это " + result + " четырехзначное число");
@@ -52,6 +64,6 @@ public class Task_1 {
             case (8) -> System.out.println("Это " + result + " восьмизначное число");
             case (9) -> System.out.println("Это " + result + " девятизначное число");
             case (10) -> System.out.println("Это " + result + " десятизначное число");
-        }
+        }   */
     }
 }
