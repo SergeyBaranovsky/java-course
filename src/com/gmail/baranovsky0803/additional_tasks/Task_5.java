@@ -22,10 +22,10 @@ public class Task_5 {
         for (int i = 0; i < length; i++) {
             System.out.print("Введите число " + (i + 1) + ": ");
             number = scanner.nextInt();
-            if (number > 0) {
+            if (number >= 0) {
                 counterPositive++;
             }
-            if (number < 0) {
+            else {
                 counterNegative++;
             }
         }

@@ -12,49 +12,35 @@ public class Exercise_16 {
 
         //  Используется для длины массива
         int length = 10;
-        //  Сохраняет позицию максимального числа в массиве
-        int maxPosition = 0;
-        //  Сохраняет позицию минимального числа в массиве
-        int minPosition = 0;
 
         //  Создание нового массива
         int[] array = new int[length];
 
         // Инициализация массива
         for (int i = 0; i < array.length; i++) {
-            array[i] = new Random().nextInt(15);
+            array[i] = new Random().nextInt(20) - 1;
         }
 
+        //  Сохраняет позицию максимального числа в массиве
+        int maxPosition = 0;
+        //  Сохраняет позицию минимального числа в массиве
+        int minPosition = 0;
         // Используется для хранения значения минимального числа массива
         int minNumber = array[0];
         // Используется для хранения значения максимального числа массива
         int maxNumber = array[0];
 
-        // Поиск минимального и максимального элементов массива
-        for (int element : array) {
-            //  Минимальный элемент
-            if (minNumber > element) {
-                minNumber = element;
-            }
-            //  максимальный элемент
-            if (maxNumber < element) {
-                maxNumber = element;
-            }
-        }
+        // Инициализация максимального,минимального числа и
+        //  инициализация максимальной и минимальной позиции чисел.
+        for (int i = 0; i < length; i++) {
 
-        // Определяет позицию максимального числа
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == maxNumber) {
-                maxPosition = i;
-                break;
-            }
-        }
-
-        // Определяет позицию минимального числа
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == minNumber) {
+            if (minNumber > array[i]) {
+                minNumber = array[i];
                 minPosition = i;
-                break;
+            }
+            if (maxNumber < array[i]) {
+                maxNumber = array[i];
+                maxPosition = i;
             }
         }
 
@@ -69,7 +55,7 @@ public class Exercise_16 {
             }
         }
         // Расчет суммы(если максимальное число находиться в массиве раньше,чем минимальное число )
-        else if (maxPosition < minPosition) {
+        else {
             for (int i = maxPosition + 1; i < minPosition; i++) {
                 sum += array[i];
             }

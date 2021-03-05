@@ -11,6 +11,7 @@ public class Task_7 {
     public static void main(String[] args) {
 
         //  Ввод данных с консоли
+        System.out.print("Введите количество программистов: ");
         int amountDev = new Scanner(System.in).nextInt();
         String result = "программист";
 
@@ -20,8 +21,7 @@ public class Task_7 {
         } else if ((amountDev % 10 > 4 && amountDev % 10 < 9)
                 || amountDev == 0) {
             result = "программистов";
-        }
-        if ((amountDev % 100 > 10 && amountDev % 100 < 20)) {
+        } else if ((amountDev % 100 > 10 && amountDev % 100 < 20)) {
             result = "программистов";
         }
 

@@ -11,7 +11,7 @@ public class Exercise_13 {
 
     public static void main(String[] args) {
 
-        //  Переменная для длины масива
+        //  Переменная для длины массива
         int length = 10;
 
         //  Создаем новый массив длинной length
@@ -23,7 +23,7 @@ public class Exercise_13 {
         //  Вывод массива на консоль
         System.out.println(Arrays.toString(arr));
 
-        //Поиск самого большого елемента в массиве и вывод его на консоль
+        //Поиск самого большого элемента в массиве и вывод его на консоль
         int maxElement = findMaxElement(arr);
         System.out.println("Самое большое число в массиве - " + maxElement);
 
@@ -32,10 +32,12 @@ public class Exercise_13 {
 
     //  Метод возвращает самый большой элемент массива
     public static int findMaxElement(int[] arr) {
-        int maxElement = 0;
-        for (int j : arr) {
-            if (j > maxElement) {
-                maxElement = j;
+
+        int maxElement = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            if(maxElement<arr[i]){
+                maxElement = arr[i];
             }
         }
         return maxElement;

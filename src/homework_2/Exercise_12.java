@@ -30,22 +30,20 @@ public class Exercise_12 {
         }
     }
 
-
+    //  Возвращает сумму первых n целых чисел, которые делятся на 3
     private static int returnSum(int number) {
 
         //  Используется для суммы чисел которые делятся на 3
         int sum = 0;
-        int counter = 0;
+        int counter = 1;
 
         //  Цикл для итераций проверки деления на 3 и увеличения суммы
-        for (int i = 1; counter != number; i++) {
-            //  Проверки деления на 3
-            if (i % 3 == 0) {
+        for (int i = 3; counter <= number; i += 3) {
+
                 //  Увелечения суммы
                 sum += i;
                 // Увеличение счетчика выхода из цикла
                 counter++;
-            }
         }
         return sum;
     }

@@ -6,12 +6,12 @@ package com.gmail.baranovsky0803.additional_tasks;
 public class Task_9 {
     public static void main(String[] args) {
         // Одноклеточная амеба
-        int ameba = 1;
+        int amebaCount = 1;
 
         //  Вывод результата
         for (int i = 3; i < 25; i += 3) {
-            ameba *= 2;
-            System.out.println("Количество амеб - " + ameba +
+            amebaCount *= 2;
+            System.out.println("Количество амеб - " + amebaCount +
                     " через " + i + " часа");
         }
     }

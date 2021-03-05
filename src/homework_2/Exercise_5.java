@@ -10,32 +10,44 @@ import java.util.Scanner;
 public class Exercise_5 {
     public static void main(String[] args) {
 
-        // Ввод любого 4ёх значного числа
-        System.out.print("Введите любое 4ех значное число: ");
+        // Ввод любого целого числа
+        System.out.print("Введите любое число: ");
         int number = new Scanner(System.in).nextInt();
 
-        //  Сохраняет 4-ую цифру числа
-        int b = number % 10;
+        //  Копия введенного числа будет использоваться для заполнения массива чисел
+        int copyNumber = number;
 
-        //  Сохраняет 3-ую цифру числа
-        int c = (number / 10) % 10;
-
-        //  Сохраняет 2-ую цифру числа
-        int d = (number / 100) % 10;
-
-        //  Сохраняет 1-ую цифру числа
-        int e = number / 1000;
-
-            /*  Метод выводит сообщения в зависимости от выполненного условия:
-                1. Если все цифры числа разные --> Число number имеет различные цифры
-                2. Если число имеет хотя бы одну пару одинаковых цифр -->
-                В числе number все или некоторые числа одинаковые
-                */
-        if (b != c && b != d && b != e && c != d && c != e && d != e) {
-            System.out.println("Число " + number + " имеет различные цифры");
-        } else {
-            System.out.println("В числе " + number + " все или некоторые числа одинаковые.");
+        //  Счетчик используется для определения длины массива чисел
+        int counter = (number == 0) ? 1 : 0;
+        while (number > 0) {
+            number /= 10;
+            counter++;
         }
+
+        //  Массив чисел
+        int[] arrayForNumbers = new int[counter];
+
+        //  Заполняем массив чисел
+        for (int i = 0; i < arrayForNumbers.length; i++) {
+            arrayForNumbers[i] = copyNumber % 10;
+            copyNumber /= 10;
+        }
+        //  сообщение обработки
+        String result = "В введенном числе все числа различные";
+
+        // Проверка числового массива  на совпадения
+        for (int i = 0; i < arrayForNumbers.length - 1; i++) {
+            for (int j = i + 1; j < arrayForNumbers.length; j++) {
+                if (arrayForNumbers[i] == arrayForNumbers[j]) {
+                    result = "В введенном числе все или некоторые числа одинаковые.";
+                    break;
+                }
+            }
+        }
+
+        // Вывод результата
+        System.out.println(result);
+
     }
 }
 

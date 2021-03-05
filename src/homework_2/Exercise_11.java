@@ -21,11 +21,11 @@ public class Exercise_11 {
             int number = scanner.nextInt();
 
             //  Отработка решения задачи
-            int counter = checkIfNumberIsPrime(number);
+            boolean resultEven = checkIfNumberIsPrime(number);
 
             /*  Проверка условия задачи. Если counter равен нулю, то наше число простое.
         Если counter не равен нулю, то наше число не простое */
-            showResult(counter, number);
+            showResult(resultEven, number);
         }
         //  Ловим ошибку
         catch (InputMismatchException ex) {
@@ -36,27 +36,24 @@ public class Exercise_11 {
     }
 
     //  Метод определяет являться ли это число простым
-    private static int checkIfNumberIsPrime(int number) {
-
-        //  Используется для подсчета делений без остатка.
-        int counter = 0;
+    private static boolean checkIfNumberIsPrime(int number) {
 
         //  Цикл проводит деление на каждое целое число от 1 до введенного цикла
         for (int i = 2; i < number; i++) {
 
             //Если число делиться без остатка, то переходит в тело ветвления
             if (number % i == 0) {
-                counter++;
+                return false;
             }
         }
-        return counter;
+        return true;
     }
 
-    private static void showResult(int counter, int number) {
+    private static void showResult(boolean result, int number) {
 
         /*  Проверка условия задачи. Если counter равен нулю, то наше число простое.
         Если counter не равен нулю, то наше число не простое */
-        if (counter == 0) {
+        if (result) {
             System.out.println("Число " + number + " простое");
         } else {
             System.out.println("Число " + number + " не простое");

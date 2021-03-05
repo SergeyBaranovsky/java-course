@@ -8,6 +8,8 @@ package homework_1;
  *   D) недель + дней + часов + минут + секунд
  */
 
+import java.sql.SQLOutput;
+
 public class Exercise_3 {
     public static void main(String[] args) {
 
@@ -18,13 +20,13 @@ public class Exercise_3 {
         int residue_sec = total_sec % 60;
 
         //  Общее количество минут в 4500 секундах
-        int min = (total_sec - residue_sec) / 60;
+        int total_min = (total_sec - residue_sec) / 60;
 
         //  Остаток минут после перевода в часы
-        int residue_min = min % 60;
+        int residue_min = total_min % 60;
 
         //  Общее количество часов в 4500 секунд
-        int hour = (min - residue_min) / 60;
+        int hour = (total_min - residue_min) / 60;
 
         // Остаток часов после перевода в дни
         int residue_hour = hour % 24;
@@ -41,6 +43,7 @@ public class Exercise_3 {
 
         //Вывод результатов на консоль
         System.out.println("Общее количество секунд: " + total_sec);
+        System.out.println("Общее количество минут: " + total_min + " секунд: " + residue_sec);
         System.out.println("Часов: " + hour + " Минут: " + residue_min + " Секунд: " + residue_sec);
         System.out.println("Неделя: " + week + " День: " + residue_day +
                 " Час: " + residue_hour + " Минута: " + residue_min +
