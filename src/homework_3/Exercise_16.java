@@ -37,8 +37,7 @@ public class Exercise_16 {
             if (minNumber > array[i]) {
                 minNumber = array[i];
                 minPosition = i;
-            }
-            if (maxNumber < array[i]) {
+            } else if (maxNumber < array[i]) {
                 maxNumber = array[i];
                 maxPosition = i;
             }
