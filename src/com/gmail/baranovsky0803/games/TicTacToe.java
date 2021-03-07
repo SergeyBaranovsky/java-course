@@ -38,7 +38,6 @@ public class TicTacToe {
         System.out.println("***** XO-Game *****");
         System.out.println("dev by Baranovsky Sergey");
 
-
         //  Вывод игрового поля и правил игры на консоль
         System.out.println("\n***** Инструкция *****\n");
         System.out.println("1. Это твоё игровое поле.\n");
@@ -99,42 +98,36 @@ public class TicTacToe {
                                 counter++;
                             }
                             break;
-
                         case 3:
                             if (!playingField[2][2].equals("[O] ") && !playingField[2][2].equals("[X] ")) {
                                 playingField[2][2] = value;
                                 counter++;
                             }
                             break;
-
                         case 4:
                             if (!playingField[1][0].equals("[O] ") && !playingField[1][0].equals("[X] ")) {
                                 playingField[1][0] = value;
                                 counter++;
                             }
                             break;
-
                         case 5:
                             if (!playingField[1][1].equals("[O] ") && !playingField[1][1].equals("[X] ")) {
                                 playingField[1][1] = value;
                                 counter++;
                             }
                             break;
-
                         case 6:
                             if (!playingField[1][2].equals("[O] ") && !playingField[1][2].equals("[X] ")) {
                                 playingField[1][2] = value;
                                 counter++;
                             }
                             break;
-
                         case 7:
                             if (!playingField[0][0].equals("[O] ") && !playingField[0][0].equals("[X] ")) {
                                 playingField[0][0] = value;
                                 counter++;
                             }
                             break;
-
                         case 8:
                             if (!playingField[0][1].equals("[O] ") && !playingField[0][1].equals("[X] ")) {
                                 playingField[0][1] = value;
@@ -173,49 +166,42 @@ public class TicTacToe {
                                 counter++;
                             }
                             break;
-
                         case 2:
                             if (!playingField[2][2].equals("[X] ") && (!playingField[2][2].equals("[O] "))) {
                                 playingField[2][2] = value;
                                 counter++;
                             }
                             break;
-
                         case 3:
                             if (!playingField[1][0].equals("[X] ") && (!playingField[1][0].equals("[O] "))) {
                                 playingField[1][0] = value;
                                 counter++;
                             }
                             break;
-
                         case 4:
                             if (!playingField[1][1].equals("[X] ") && (!playingField[1][1].equals("[O] "))) {
                                 playingField[1][1] = value;
                                 counter++;
                             }
                             break;
-
                         case 5:
                             if (!playingField[1][2].equals("[X] ") && (!playingField[1][2].equals("[O] "))) {
                                 playingField[1][2] = value;
                                 counter++;
                             }
                             break;
-
                         case 6:
                             if (!playingField[0][0].equals("[X] ") && (!playingField[0][0].equals("[O] "))) {
                                 playingField[0][0] = value;
                                 counter++;
                             }
                             break;
-
                         case 7:
                             if (!playingField[0][1].equals("[X] ") && (!playingField[0][1].equals("[O] "))) {
                                 playingField[0][1] = value;
                                 counter++;
                             }
                             break;
-
                         case 8:
                             if (!playingField[0][2].equals("[X] ") && (!playingField[0][2].equals("[O] "))) {
                                 playingField[0][2] = value;
@@ -301,11 +287,10 @@ public class TicTacToe {
                     gameResult = false;
                 }
             } while (gameResult);
-        } else {
+        }
+        else {
 
-            //  "Велосипед"
             do {
-
                 //  Проверяет чей сейчас ход
                 value = counter % 2 == 0 ? "[O] " : "[X] ";
 
@@ -324,7 +309,6 @@ public class TicTacToe {
                 System.out.println();
                 System.out.println("Введи свободный номер  на игровом поле");
 
-
                 //  Игрок делает ход
                 do {
                     //  Вывод сообщение о ходе игрока
@@ -335,7 +319,6 @@ public class TicTacToe {
                     playerChoice = new Scanner(System.in).nextInt();
 
                 } while (playerChoice < 1 || playerChoice > 9);
-
 
                 //   В зависимости от выбранной позиции свободное поле помечается X/O
                 switch (playerChoice) {
@@ -352,42 +335,36 @@ public class TicTacToe {
                             counter++;
                         }
                         break;
-
                     case 3:
                         if (!playingField[2][2].equals("[O] ") && !playingField[2][2].equals("[X] ")) {
                             playingField[2][2] = value;
                             counter++;
                         }
                         break;
-
                     case 4:
                         if (!playingField[1][0].equals("[O] ") && !playingField[1][0].equals("[X] ")) {
                             playingField[1][0] = value;
                             counter++;
                         }
                         break;
-
                     case 5:
                         if (!playingField[1][1].equals("[O] ") && !playingField[1][1].equals("[X] ")) {
                             playingField[1][1] = value;
                             counter++;
                         }
                         break;
-
                     case 6:
                         if (!playingField[1][2].equals("[O] ") && !playingField[1][2].equals("[X] ")) {
                             playingField[1][2] = value;
                             counter++;
                         }
                         break;
-
                     case 7:
                         if (!playingField[0][0].equals("[O] ") && !playingField[0][0].equals("[X] ")) {
                             playingField[0][0] = value;
                             counter++;
                         }
                         break;
-
                     case 8:
                         if (!playingField[0][1].equals("[O] ") && !playingField[0][1].equals("[X] ")) {
                             playingField[0][1] = value;
@@ -401,7 +378,6 @@ public class TicTacToe {
                         }
                         break;
                 }
-
 
                 // Проверка на победу у игроков
                 if ((playingField[0][0].equals("[X] ") && playingField[0][1].equals("[X]") && playingField[0][2].equals("[X]"))
@@ -468,7 +444,6 @@ public class TicTacToe {
 
                     //  Переключение триггера на окончание игры
                     gameResult = false;
-
                 }
             } while (gameResult);
         }
