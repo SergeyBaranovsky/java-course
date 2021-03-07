@@ -12,7 +12,7 @@ package com.gmail.baranovsky0803.games;
 import java.util.Random;
 import java.util.Scanner;
 
-public class TicTakToe {
+public class TicTacToe {
 
     static final int LENGTH = 3;
     static Random random = new Random();
@@ -341,91 +341,67 @@ public class TicTakToe {
                 switch (playerChoice) {
 
                     case 1:
-                        //  Если поле занято то игрок делает еще один ход
-                        if (playingField[2][0].equals("[X] ") || playingField[2][0].equals("[O] ")) {
-                            counter--;
-
-                        } // Иначе в поле записывается Х/O
-                        else {
+                        if (!playingField[2][0].equals("[O] ") && !playingField[2][0].equals("[X] ")) {
                             playingField[2][0] = value;
+                            counter++;
                         }
                         break;
-
                     case 2:
-                        if (playingField[2][1].equals("[X] ") || playingField[2][1].equals("[O] ")) {
-                            counter--;
-
-                        } else {
+                        if (!playingField[2][1].equals("[O] ") && !playingField[2][1].equals("[X] ")) {
                             playingField[2][1] = value;
+                            counter++;
                         }
                         break;
 
                     case 3:
-                        if (playingField[2][2].equals("[X] ") || playingField[2][2].equals("[O] ")) {
-                            counter--;
-
-                        } else {
+                        if (!playingField[2][2].equals("[O] ") && !playingField[2][2].equals("[X] ")) {
                             playingField[2][2] = value;
+                            counter++;
                         }
                         break;
 
                     case 4:
-                        if (playingField[1][0].equals("[X] ") || playingField[1][0].equals("[O] ")) {
-                            counter--;
-
-                        } else {
+                        if (!playingField[1][0].equals("[O] ") && !playingField[1][0].equals("[X] ")) {
                             playingField[1][0] = value;
+                            counter++;
                         }
                         break;
 
                     case 5:
-                        if (playingField[1][1].equals("[X] ") || playingField[1][1].equals("[O] ")) {
-                            counter--;
-
-                        } else {
+                        if (!playingField[1][1].equals("[O] ") && !playingField[1][1].equals("[X] ")) {
                             playingField[1][1] = value;
+                            counter++;
                         }
                         break;
 
                     case 6:
-                        if (playingField[1][2].equals("[X] ") || playingField[1][2].equals("[O] ")) {
-                            counter--;
-
-                        } else {
+                        if (!playingField[1][2].equals("[O] ") && !playingField[1][2].equals("[X] ")) {
                             playingField[1][2] = value;
+                            counter++;
                         }
                         break;
-                    case 7:
-                        if (playingField[0][0].equals("[X] ") || playingField[0][0].equals("[O] ")) {
-                            counter--;
 
-                        } else {
+                    case 7:
+                        if (!playingField[0][0].equals("[O] ") && !playingField[0][0].equals("[X] ")) {
                             playingField[0][0] = value;
+                            counter++;
                         }
                         break;
 
                     case 8:
-                        if (playingField[0][1].equals("[X] ") || playingField[0][1].equals("[O] ")) {
-                            counter--;
-
-                        } else {
+                        if (!playingField[0][1].equals("[O] ") && !playingField[0][1].equals("[X] ")) {
                             playingField[0][1] = value;
+                            counter++;
                         }
                         break;
-
                     case 9:
-                        if (playingField[0][2].equals("[X] ") || playingField[0][2].equals("[O] ")) {
-                            counter--;
-
-                        } else {
+                        if (!playingField[0][2].equals("[O] ") && !playingField[0][2].equals("[X] ")) {
                             playingField[0][2] = value;
+                            counter++;
                         }
                         break;
-
                 }
 
-                //  Триггер перехода хода(если ячейка выбора была пустая --> переход хода)
-                counter++;
 
                 // Проверка на победу у игроков
                 if ((playingField[0][0].equals("[X] ") && playingField[0][1].equals("[X]") && playingField[0][2].equals("[X]"))
