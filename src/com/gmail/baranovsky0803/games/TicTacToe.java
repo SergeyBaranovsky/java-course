@@ -13,439 +13,189 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe {
-
-    static final int LENGTH = 3;
-    static Random random = new Random();
-    static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
 
-        //  Игровое поле
-        /*   [ ] [ ] [ ]
-         *   [ ] [ ] [ ]
-         *   [ ] [ ] [ ]  */
-        String[][] playingField = new String[LENGTH][LENGTH];
+        //  Игровое поле 3х3
+        String[][] gameField = new String[3][3];
 
+        //  Инкремент для инициализации номера игровой ячейки
+        int numberField = 7;
 
-        String value; //  Значение X/O
-
-        int playerChoice; // Инициализация переменной для выбора режимов игры
-        int fieldNumber = 7;//  Используется для заполнения игрового массива 789/456/123
-        int counter = 1;//  Счётчик ходов,триггер смены X/O, триггер для ничьей( counter == 0)
-
-        boolean gameResult = true;// триггер выхода из цикла do-while
-
-        System.out.println("***** XO-Game *****");
-        System.out.println("dev by Baranovsky Sergey");
-
-        //  Вывод игрового поля и правил игры на консоль
-        System.out.println("\n***** Инструкция *****\n");
-        System.out.println("1. Это твоё игровое поле.\n");
-
-        for (int i = 0; i < LENGTH; i++) {
-            for (int j = 0; j < LENGTH; j++) {
-                playingField[i][j] = "[" + fieldNumber + "] ";
-                fieldNumber++;
+        //  Нумерация игрового поля
+        //  [7][8][9]
+        //  [4][5][6]
+        //  [1][2][3]
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                gameField[i][j] = "[" + numberField + "]";
+                numberField++;
             }
-            fieldNumber -= 6;
+            numberField -= 6;
         }
 
-        for (int i = 0; i < LENGTH; i++) {
-            for (int j = 0; j < LENGTH; j++) {
-                System.out.print(playingField[i][j]);
+        //  Вывод меню выбора режима игры
+        System.out.println("Выбери режим игры");
+        System.out.println("1. PvP mode");
+        System.out.println("2. PvE mode");
+
+        //  Хранит значения режима игры
+        int scannerResult;
+        do {
+            //  Инициализация режима игры
+            System.out.print("Твой выбор: ");
+            scannerResult = new Scanner(System.in).nextInt();
+        } while (scannerResult < 1 || scannerResult > 2);
+
+        //  Счетчик ходов
+        int counter = 1;
+        //  Хранит значения(Х или О)
+        char playerValue;
+        //  Хранит значения игровой ячейки,куда игрок сделал свой ход
+        int playerChoice;
+        //  Триггер игры
+        boolean gameResult = true;
+
+        do {
+            //  Вывод игрового поля на консоль
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    System.out.print(gameField[i][j]);
+                }
+                System.out.println();
+            }
+
+            //  В зависимости от счетчика меняет значения (Х либо О)
+            playerValue = counter % 2 == 0 ? 'O' : 'X';
+
+            if (scannerResult == 1) {
+                System.out.print("Ход игрока который играет за " + playerValue);
+                playerChoice = new Scanner(System.in).nextInt();
+            } else {
+                if (counter % 2 == 0) {
+                    playerChoice = new Random().nextInt(9) + 1;
+                    System.out.println("Компьютер сделал свой ход");
+                } else {
+                    System.out.print("Твой ход игрок( " + playerValue + " ): ");
+                    playerChoice = new Scanner(System.in).nextInt();
+                }
+            }
+            //  В зависимости от выбранной ячейки для хода игрока происходит запись значения,
+            //  а если ячейка занята,то игрок делает еще один ход
+            switch (playerChoice) {
+                case 1:
+                    if (gameField[2][0].equals("[X]") || gameField[2][0].equals("[O]")) {
+                        break;
+                    }
+                    gameField[2][0] = "[" + playerValue + "]";
+                    counter++;
+                    break;
+                case 2:
+                    if (gameField[2][1].equals("[X]") || gameField[2][1].equals("[O]")) {
+                        break;
+                    }
+                    gameField[2][1] = "[" + playerValue + "]";
+                    counter++;
+                    break;
+                case 3:
+                    if (gameField[2][2].equals("[X]") || gameField[2][2].equals("[O]")) {
+                        break;
+                    }
+                    gameField[2][2] = "[" + playerValue + "]";
+                    counter++;
+                    break;
+                case 4:
+                    if (gameField[1][0].equals("[X]") || gameField[1][0].equals("[O]")) {
+                        break;
+                    }
+                    gameField[1][0] = "[" + playerValue + "]";
+                    counter++;
+                    break;
+                case 5:
+                    if (gameField[1][1].equals("[X]") || gameField[1][1].equals("[O]")) {
+                        break;
+                    }
+                    gameField[1][1] = "[" + playerValue + "]";
+                    counter++;
+                    break;
+                case 6:
+                    if (gameField[1][2].equals("[X]") || gameField[1][2].equals("[O]")) {
+                        break;
+                    }
+                    gameField[1][2] = "[" + playerValue + "]";
+                    counter++;
+                    break;
+                case 7:
+                    if (gameField[0][0].equals("[X]") || gameField[0][0].equals("[O]")) {
+                        break;
+                    }
+                    gameField[0][0] = "[" + playerValue + "]";
+                    counter++;
+                    break;
+                case 8:
+                    if (gameField[0][1].equals("[X]") || gameField[0][1].equals("[O]")) {
+                        break;
+                    }
+                    gameField[0][1] = "[" + playerValue + "]";
+                    counter++;
+                    break;
+                case 9:
+                    if (gameField[0][2].equals("[X]") || gameField[0][2].equals("[O]")) {
+                        break;
+                    }
+                    gameField[0][2] = "[" + playerValue + "]";
+                    counter++;
+                    break;
+                default:
+                    System.out.println("Введи число от 1 - 9 ");
+            }
+            // Проверка комбинаций выигрыша по диагонали
+            for (int i = 1; i < 2; i++) {
+                for (int j = 1; j < 2; j++) {
+                    if ((!gameField[i][j].equals(gameField[i - 1][j - 1]) || !gameField[i][j].equals(gameField[i + 1][j + 1]))
+                            && (!gameField[i][j].equals(gameField[i + 1][j - 1]) || !gameField[i][j].equals(gameField[i - 1][j + 1]))) {
+                        continue;
+                    }
+                    System.out.println("Winner " + playerValue);
+                    gameResult = false;
+                    break;
+                }
+            }
+            // Проверка комбинаций выигрыша по горизонтали
+            for (int i = 0; i < 2; i++) {
+                for (int j = 1; j < 2; j++) {
+                    if (gameField[i][j].equals(gameField[i][j - 1])
+                            && gameField[i][j].equals(gameField[i][j + 1])) {
+                        System.out.println("Winner " + playerValue);
+                        gameResult = false;
+                        break;
+                    }
+                }
+            }
+            // Проверка комбинаций выигрыша по вертикали
+            for (int i = 1; i < 2; i++) {
+                for (int j = 0; j < 2; j++) {
+                    if (gameField[i][j].equals(gameField[i - 1][j])
+                            && gameField[i][j].equals(gameField[i + 1][j])) {
+                        System.out.println("Winner " + playerValue);
+                        gameResult = false;
+                        break;
+                    }
+                }
+            }
+            //  Если сделано 9 результативных ходов
+            if (counter > 9) {
+                System.out.println("Ничья");
+                gameResult = false;
+            }
+
+        }
+        while (gameResult);
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(gameField[i][j]);
             }
             System.out.println();
-        }
-        System.out.println("\n2. В игре используется стандартные правила игры Крестики - Нолики");
-        System.out.println("3. Чтобы сделать ход введи с клавиатуры номер свободный ячейки");
-
-        System.out.println("\nНо для начала выбери режим игры:");
-        System.out.println("\tPvP режим --> введи 1 и жми Enter");
-        System.out.println("\tPvE режим --> введи 2 и жми Enter");
-
-        //  Выбор режима игры
-        do {
-            System.out.print("\nТвой выбор: ");
-            playerChoice = scanner.nextInt();
-
-        } while ((playerChoice < 1 || playerChoice > 2));
-
-        //  Если режим игры против компьютера
-        if (playerChoice == 2) {
-            do {
-                //  Если ходит игрок(   Игрок ходит вторым и играет ноликом)
-                if (counter % 2 == 0) {
-                    value = "[O] ";
-
-                    //  Выбор поля в которое игрок хочет поставить нолик
-                    do {
-                        System.out.print("\nТвой ход: ");
-                        playerChoice = scanner.nextInt();
-                    } while (playerChoice < 1 || playerChoice > 9);
-
-                    //  Если игровое поле не занято,то в него записывается ход игрока
-                    //  Если занято,игрок повторяет свой выбор
-                    switch (playerChoice) {
-                        case 1:
-                            if (!playingField[2][0].equals("[O] ") && !playingField[2][0].equals("[X] ")) {
-                                playingField[2][0] = value;
-                                counter++;
-                            }
-                            break;
-                        case 2:
-                            if (!playingField[2][1].equals("[O] ") && !playingField[2][1].equals("[X] ")) {
-                                playingField[2][1] = value;
-                                counter++;
-                            }
-                            break;
-                        case 3:
-                            if (!playingField[2][2].equals("[O] ") && !playingField[2][2].equals("[X] ")) {
-                                playingField[2][2] = value;
-                                counter++;
-                            }
-                            break;
-                        case 4:
-                            if (!playingField[1][0].equals("[O] ") && !playingField[1][0].equals("[X] ")) {
-                                playingField[1][0] = value;
-                                counter++;
-                            }
-                            break;
-                        case 5:
-                            if (!playingField[1][1].equals("[O] ") && !playingField[1][1].equals("[X] ")) {
-                                playingField[1][1] = value;
-                                counter++;
-                            }
-                            break;
-                        case 6:
-                            if (!playingField[1][2].equals("[O] ") && !playingField[1][2].equals("[X] ")) {
-                                playingField[1][2] = value;
-                                counter++;
-                            }
-                            break;
-                        case 7:
-                            if (!playingField[0][0].equals("[O] ") && !playingField[0][0].equals("[X] ")) {
-                                playingField[0][0] = value;
-                                counter++;
-                            }
-                            break;
-                        case 8:
-                            if (!playingField[0][1].equals("[O] ") && !playingField[0][1].equals("[X] ")) {
-                                playingField[0][1] = value;
-                                counter++;
-                            }
-                            break;
-                        case 9:
-                            if (!playingField[0][2].equals("[O] ") && !playingField[0][2].equals("[X] ")) {
-                                playingField[0][2] = value;
-                                counter++;
-                            }
-                            break;
-                    }
-                }
-                // Если ход компьютера (компьютер ходит первым и играет Крестиком
-                else {
-
-                    System.out.println();
-                    value = "[X] ";
-
-                    //  Выбирается рандомное число от 0 до 8 для соответствующего хода
-                    int randomValue = random.nextInt(8);
-
-                    //  Если игровое поле не занято,то в него записывается ход компьютера
-                    //  Если занято,компьютер повторяет свой выбор
-                    switch (randomValue) {
-                        case 0:
-                            if (!playingField[2][0].equals("[X] ") && (!playingField[2][0].equals("[O] "))) {
-                                playingField[2][0] = value;
-                                counter++;
-                            }
-                            break;
-                        case 1:
-                            if (!playingField[2][1].equals("[X] ") && (!playingField[2][1].equals("[O] "))) {
-                                playingField[2][1] = value;
-                                counter++;
-                            }
-                            break;
-                        case 2:
-                            if (!playingField[2][2].equals("[X] ") && (!playingField[2][2].equals("[O] "))) {
-                                playingField[2][2] = value;
-                                counter++;
-                            }
-                            break;
-                        case 3:
-                            if (!playingField[1][0].equals("[X] ") && (!playingField[1][0].equals("[O] "))) {
-                                playingField[1][0] = value;
-                                counter++;
-                            }
-                            break;
-                        case 4:
-                            if (!playingField[1][1].equals("[X] ") && (!playingField[1][1].equals("[O] "))) {
-                                playingField[1][1] = value;
-                                counter++;
-                            }
-                            break;
-                        case 5:
-                            if (!playingField[1][2].equals("[X] ") && (!playingField[1][2].equals("[O] "))) {
-                                playingField[1][2] = value;
-                                counter++;
-                            }
-                            break;
-                        case 6:
-                            if (!playingField[0][0].equals("[X] ") && (!playingField[0][0].equals("[O] "))) {
-                                playingField[0][0] = value;
-                                counter++;
-                            }
-                            break;
-                        case 7:
-                            if (!playingField[0][1].equals("[X] ") && (!playingField[0][1].equals("[O] "))) {
-                                playingField[0][1] = value;
-                                counter++;
-                            }
-                            break;
-                        case 8:
-                            if (!playingField[0][2].equals("[X] ") && (!playingField[0][2].equals("[O] "))) {
-                                playingField[0][2] = value;
-                                counter++;
-                            }
-                            break;
-                    }
-
-                    //  Выводиться игровое поле на консоль
-                    for (int i = 0; i < LENGTH; i++) {
-                        for (int j = 0; j < LENGTH; j++) {
-                            System.out.print(playingField[i][j]);
-                        }
-                        System.out.println();
-                    }
-                    //  Сообщение,что компьютер сделал свой ход
-                    System.out.println("Компьютер сделал свой ход.");
-                }
-                // Проверка на победу у игроков
-                if ((playingField[0][0].equals("[X] ") && playingField[0][1].equals("[X] ") && playingField[0][2].equals("[X] "))
-                        || (playingField[1][0].equals("[X] ") && playingField[1][1].equals("[X] ") && playingField[1][2].equals("[X] "))
-                        || (playingField[2][0].equals("[X] ") && playingField[2][1].equals("[X] ") && playingField[2][2].equals("[X] "))
-                        || (playingField[0][0].equals("[X] ") && playingField[1][0].equals("[X] ") && playingField[2][0].equals("[X] "))
-                        || (playingField[0][1].equals("[X] ") && playingField[1][1].equals("[X] ") && playingField[2][1].equals("[X] "))
-                        || (playingField[0][2].equals("[X] ") && playingField[1][2].equals("[X] ") && playingField[2][2].equals("[X] "))
-                        || (playingField[0][0].equals("[X] ") && playingField[1][1].equals("[X] ") && playingField[2][2].equals("[X] "))
-                        || (playingField[0][2].equals("[X] ") && playingField[1][1].equals("[X] ") && playingField[2][0].equals("[X] "))) {
-
-                    //  Вывод на консоль игрового поля
-                    for (int i = 0; i < LENGTH; i++) {
-                        for (int j = 0; j < LENGTH; j++) {
-                            System.out.print(playingField[i][j]);
-                            System.out.print(" ");
-                        }
-                        System.out.println();
-                    }
-
-                    //  Вывод сообщения о победе игрока
-                    System.out.println("\nПобедил компьютер");
-
-                    //  Переключение триггера на окончание игры
-                    gameResult = false;
-
-                } else if ((playingField[0][0].equals("[O] ") && playingField[0][1].equals("[O] ") && playingField[0][2].equals("[O] "))
-                        || (playingField[1][0].equals("[O] ") && playingField[1][1].equals("[O] ") && playingField[1][2].equals("[O] "))
-                        || (playingField[2][0].equals("[O] ") && playingField[2][1].equals("[O] ") && playingField[2][2].equals("[O] "))
-                        || (playingField[0][0].equals("[O] ") && playingField[1][0].equals("[O] ") && playingField[2][0].equals("[O] "))
-                        || (playingField[0][1].equals("[O] ") && playingField[1][1].equals("[O] ") && playingField[2][1].equals("[O] "))
-                        || (playingField[0][2].equals("[O] ") && playingField[1][2].equals("[O] ") && playingField[2][2].equals("[O] "))
-                        || (playingField[0][0].equals("[O] ") && playingField[1][1].equals("[O] ") && playingField[2][2].equals("[O] "))
-                        || (playingField[0][2].equals("[O] ") && playingField[1][1].equals("[O] ") && playingField[2][0].equals("[O] "))) {
-
-                    //  Вывод на консоль игрового поля
-                    for (int i = 0; i < LENGTH; i++) {
-                        for (int j = 0; j < LENGTH; j++) {
-                            System.out.print(playingField[i][j]);
-                            System.out.print(" ");
-                        }
-                        System.out.println();
-                    }
-
-                    //  Вывод сообщения о победе игрока
-                    System.out.println("\nТы победил");
-
-                    //  Переключение триггера на окончание игры
-                    gameResult = false;
-
-                } else if (counter == 9) {
-
-                    //  Вывод на консоль игрового поля
-                    for (int i = 0; i < LENGTH; i++) {
-                        for (int j = 0; j < LENGTH; j++) {
-                            System.out.print(playingField[i][j]);
-                            System.out.print(" ");
-                        }
-                        System.out.println();
-                    }
-
-                    //  Вывод сообщения о ничьей на консоль
-                    System.out.println("\nНичья");
-
-                    //  Переключение триггера на окончание игры
-                    gameResult = false;
-                }
-            } while (gameResult);
-        }
-        else {
-
-            do {
-                //  Проверяет чей сейчас ход
-                value = counter % 2 == 0 ? "[O] " : "[X] ";
-
-                //  Вывод игрового поля на консоль
-                System.out.println("Игровое поле");
-                for (int i = 0; i < LENGTH; i++) {
-                    for (int j = 0; j < LENGTH; j++) {
-
-                        System.out.print(playingField[i][j]);
-                        System.out.print(" ");
-                    }
-                    System.out.println();
-                }
-
-                //  Вывод возможного хода для игрока
-                System.out.println();
-                System.out.println("Введи свободный номер  на игровом поле");
-
-                //  Игрок делает ход
-                do {
-                    //  Вывод сообщение о ходе игрока
-                    System.out.println();
-                    System.out.print("\nВыберите свой ход (ходит игрок играющий за " + value + " ): ");
-
-                    //  Записывает в переменную выбор для хода игрока
-                    playerChoice = new Scanner(System.in).nextInt();
-
-                } while (playerChoice < 1 || playerChoice > 9);
-
-                //   В зависимости от выбранной позиции свободное поле помечается X/O
-                switch (playerChoice) {
-
-                    case 1:
-                        if (!playingField[2][0].equals("[O] ") && !playingField[2][0].equals("[X] ")) {
-                            playingField[2][0] = value;
-                            counter++;
-                        }
-                        break;
-                    case 2:
-                        if (!playingField[2][1].equals("[O] ") && !playingField[2][1].equals("[X] ")) {
-                            playingField[2][1] = value;
-                            counter++;
-                        }
-                        break;
-                    case 3:
-                        if (!playingField[2][2].equals("[O] ") && !playingField[2][2].equals("[X] ")) {
-                            playingField[2][2] = value;
-                            counter++;
-                        }
-                        break;
-                    case 4:
-                        if (!playingField[1][0].equals("[O] ") && !playingField[1][0].equals("[X] ")) {
-                            playingField[1][0] = value;
-                            counter++;
-                        }
-                        break;
-                    case 5:
-                        if (!playingField[1][1].equals("[O] ") && !playingField[1][1].equals("[X] ")) {
-                            playingField[1][1] = value;
-                            counter++;
-                        }
-                        break;
-                    case 6:
-                        if (!playingField[1][2].equals("[O] ") && !playingField[1][2].equals("[X] ")) {
-                            playingField[1][2] = value;
-                            counter++;
-                        }
-                        break;
-                    case 7:
-                        if (!playingField[0][0].equals("[O] ") && !playingField[0][0].equals("[X] ")) {
-                            playingField[0][0] = value;
-                            counter++;
-                        }
-                        break;
-                    case 8:
-                        if (!playingField[0][1].equals("[O] ") && !playingField[0][1].equals("[X] ")) {
-                            playingField[0][1] = value;
-                            counter++;
-                        }
-                        break;
-                    case 9:
-                        if (!playingField[0][2].equals("[O] ") && !playingField[0][2].equals("[X] ")) {
-                            playingField[0][2] = value;
-                            counter++;
-                        }
-                        break;
-                }
-
-                // Проверка на победу у игроков
-                if ((playingField[0][0].equals("[X] ") && playingField[0][1].equals("[X]") && playingField[0][2].equals("[X]"))
-                        || (playingField[1][0].equals("[X] ") && playingField[1][1].equals("[X] ") && playingField[1][2].equals("[X] "))
-                        || (playingField[2][0].equals("[X] ") && playingField[2][1].equals("[X] ") && playingField[2][2].equals("[X] "))
-                        || (playingField[0][0].equals("[X] ") && playingField[1][0].equals("[X] ") && playingField[2][0].equals("[X] "))
-                        || (playingField[0][1].equals("[X] ") && playingField[1][1].equals("[X] ") && playingField[2][1].equals("[X] "))
-                        || (playingField[0][2].equals("[X] ") && playingField[1][2].equals("[X] ") && playingField[2][2].equals("[X] "))
-                        || (playingField[0][0].equals("[X] ") && playingField[1][1].equals("[X] ") && playingField[2][2].equals("[X] "))
-                        || (playingField[0][2].equals("[X] ") && playingField[1][1].equals("[X] ") && playingField[2][0].equals("[X] "))) {
-
-                    //  Вывод на консоль игрового поля
-                    for (int i = 0; i < LENGTH; i++) {
-                        for (int j = 0; j < LENGTH; j++) {
-                            System.out.print(playingField[i][j]);
-                            System.out.print(" ");
-                        }
-                        System.out.println();
-                    }
-
-                    //  Вывод сообщения о победе игрока
-                    System.out.println("Победил игрок игравший Х - крестиком");
-
-                    //  Переключение триггера на окончание игры
-                    gameResult = false;
-
-                } else if ((playingField[0][0].equals("[O] ") && playingField[0][1].equals("[O] ") && playingField[0][2].equals("[O] "))
-                        || (playingField[1][0].equals("[O] ") && playingField[1][1].equals("[O] ") && playingField[1][2].equals("[O] "))
-                        || (playingField[2][0].equals("[O] ") && playingField[2][1].equals("[O] ") && playingField[2][2].equals("[O] "))
-                        || (playingField[0][0].equals("[O] ") && playingField[1][0].equals("[O] ") && playingField[2][0].equals("[O] "))
-                        || (playingField[0][1].equals("[O] ") && playingField[1][1].equals("[O] ") && playingField[2][1].equals("[O] "))
-                        || (playingField[0][2].equals("[O] ") && playingField[1][2].equals("[O] ") && playingField[2][2].equals("[O] "))
-                        || (playingField[0][0].equals("[O] ") && playingField[1][1].equals("[O] ") && playingField[2][2].equals("[O] "))
-                        || (playingField[0][2].equals("[O] ") && playingField[1][1].equals("[O] ") && playingField[2][0].equals("[O] "))) {
-
-                    //  Вывод на консоль игрового поля
-                    for (int i = 0; i < LENGTH; i++) {
-                        for (int j = 0; j < LENGTH; j++) {
-                            System.out.print(playingField[i][j]);
-                            System.out.print(" ");
-                        }
-                        System.out.println();
-                    }
-
-                    //  Вывод сообщения о победе игрока
-                    System.out.println("Победил игрок игравший O - ноликом");
-
-                    //  Переключение триггера на окончание игры
-                    gameResult = false;
-
-                } else if (counter > 9) {
-
-                    //  Вывод на консоль игрового поля
-                    for (int i = 0; i < LENGTH; i++) {
-                        for (int j = 0; j < LENGTH; j++) {
-                            System.out.print(playingField[i][j]);
-                            System.out.print(" ");
-                        }
-                        System.out.println();
-                    }
-
-                    //  Вывод сообщения о ничьей на консоль
-                    System.out.println("\nНичья");
-
-                    //  Переключение триггера на окончание игры
-                    gameResult = false;
-                }
-            } while (gameResult);
         }
     }
 }
